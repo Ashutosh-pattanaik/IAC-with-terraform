@@ -1,11 +1,11 @@
 # IAC-with-terraform
 
-1. Project workflow
+# 1. Project workflow
 
 main.tf(Define Docker image and container) -> terraform init -> Download the Docker provider -> terraform plan -> Preview infrastructure changes -> terraform apply -> Create the Docker container 
 Verify → Inspect state → Destroy
 
-2. Prerequisites
+# 2. Prerequisites
 
 Install these tools on your local Windows computer:
 
@@ -17,16 +17,16 @@ PowerShell or Windows Terminal.
 
 Verify the installations:
 
-#docker --version
-#docker info
-#terraform -version
+# docker --version
+# docker info
+# terraform -version
 
-3. Create the project directory
+# 3. Create the project directory
 
 Run these commands in PowerShell:
 
-#mkdir terraform-docker-project
-#cd terraform-docker-project
+# mkdir terraform-docker-project
+# cd terraform-docker-project
 notepad -> main.tf
 
 Paste the following Terraform configuration into main.tf.
@@ -79,56 +79,56 @@ value = "http://localhost:8080"
 
 This configuration uses Nginx as the application, maps container port 80 to local port 8080, and defines outputs for verification.
 
-4. Initialize Terraform
+# 4. Initialize Terraform
 
 Run:
 
-#terraform init
+# terraform init
 
-5. Preview the infrastructure
+# 5. Preview the infrastructure
 
 Before creating anything, run:
 
-#terraform plan
+# terraform plan
 
-6. Create the container
+# 6. Create the container
 
 Execute:
 
-#terraform apply
+# terraform apply
 
 Review the plan, then enter:
 
 yes
 
-8. Inspect Terraform state
+# 8. Inspect Terraform state
 
 Terraform state tracks the resources managed by your configuration.
 
 Run these commands one at a time:
 
-#terraform state list
+# terraform state list
 
 Inspect the container resource:
 
-#terraform state show docker_container.nginx
+# terraform state show docker_container.nginx
 
 Display the state in JSON format:
 
-#terraform show
-#terraform show -json
+# terraform show
+# terraform show -json
 
-9. Destroy the infrastructure
+# 9. Destroy the infrastructure
 
 When you have finished testing, preview the deletion:
 
-#terraform plan -destroy
+# terraform plan -destroy
 
 Then destroy the Terraform-managed resources:
 
-#terraform destroy
+# terraform destroy
 
 Verify the container is gone:
 
-#docker ps -a
-#terraform state list
+# docker ps -a
+# terraform state list
